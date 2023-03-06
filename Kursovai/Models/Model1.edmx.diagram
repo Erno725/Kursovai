@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e477a1e2e4f14731a0a6528b6e05d148" Name="Diagram1">
+        <EntityTypeShape EntityType="user15Model.sysdiagrams" Width="1.5" PointX="5.75" PointY="5.75" />
+        <EntityTypeShape EntityType="user15Model.Задача" Width="1.5" PointX="5.25" PointY="1" />
+        <EntityTypeShape EntityType="user15Model.МестоРаботника" Width="1.5" PointX="0.75" PointY="2" />
+        <EntityTypeShape EntityType="user15Model.Направление" Width="1.5" PointX="3" PointY="6.25" />
+        <EntityTypeShape EntityType="user15Model.Проверка" Width="1.5" PointX="3" PointY="10.875" />
+        <EntityTypeShape EntityType="user15Model.Роли" Width="1.5" PointX="0.75" PointY="6.125" />
+        <EntityTypeShape EntityType="user15Model.СделаноРаботником" Width="1.5" PointX="3" PointY="8.5" />
+        <EntityTypeShape EntityType="user15Model.Сотрудник" Width="1.5" PointX="3" PointY="1.25" />
+        <EntityTypeShape EntityType="user15Model.КлючАдминестратора" Width="1.5" PointX="7.75" PointY="0.75" />
+        <AssociationConnector Association="user15Model.C_" />
+        <AssociationConnector Association="user15Model.FK_Задача_Направление" />
+        <AssociationConnector Association="user15Model.FK_Задача_Проверка" />
+        <AssociationConnector Association="user15Model.FK_Задача_Сделано_работником" />
+        <AssociationConnector Association="user15Model.FK_Задача_Сотрудник" />
+        <AssociationConnector Association="user15Model.FK_Сотрудник_МестоРаботника" />
+        <AssociationConnector Association="user15Model.FK_Сотрудник_Роли" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
