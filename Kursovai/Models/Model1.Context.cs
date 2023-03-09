@@ -29,9 +29,7 @@ namespace Kursovai.Models
         public virtual DbSet<Задача> Задача { get; set; }
         public virtual DbSet<МестоРаботника> МестоРаботника { get; set; }
         public virtual DbSet<Направление> Направление { get; set; }
-        public virtual DbSet<Проверка> Проверка { get; set; }
         public virtual DbSet<Роли> Роли { get; set; }
-        public virtual DbSet<СделаноРаботником> СделаноРаботником { get; set; }
         public virtual DbSet<Сотрудник> Сотрудник { get; set; }
         public virtual DbSet<КлючАдминестратора> КлючАдминестратора { get; set; }
     }

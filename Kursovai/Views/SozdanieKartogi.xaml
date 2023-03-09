@@ -1,0 +1,37 @@
+﻿<Window x:Class="Kursovai.Views.SozdanieKartogi"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Kursovai.Views"
+        mc:Ignorable="d"
+        Title="SozdanieKartogi" Height="450" Width="500">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="3*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+        <TextBlock Text="создание карточки"  Grid.ColumnSpan="2" FontSize="30" HorizontalAlignment="Center" />
+        
+        <TextBlock  Text="названиезадачи" Grid.Row="1" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBlock  Text="направление"  Grid.Row="2" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <!--<TextBlock  Text="дата" Grid.Row="3" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center"/>--> 
+        <TextBlock Text=" описание" Grid.Row="3" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+        <TextBox Grid.Row="1" Grid.Column="1" Width="250" Height="30" Name="Naznagenie_TB"/>
+        <ComboBox Grid.Row="2" Grid.Column="1" Width="250" Height="30" Name="Naprovlenie_TB" />
+       <!--<DatePicker Grid.Row="3" Grid.Column="1"  Width="100" Height="30" Name="Data_DP"/>-->
+        <TextBox Grid.Row="3" Grid.Column="1" Width="250" Height="90" Name="Opisanie_TB" TextWrapping="Wrap" Grid.RowSpan="2"/>
+
+        <Button Content="добавить" Grid.Column="1" Grid.Row="6" Width="100" Height="30" Click="Button_Click"/>
+
+    </Grid>
+</Window>

@@ -19,6 +19,7 @@
             <ColumnDefinition Width="10*" />
             <ColumnDefinition Width="1*" />
         </Grid.ColumnDefinitions>
+        <Image Name="Image_Icon" Grid.Column="1" Source="/Resources/Icons.png" Width="10" Height="10" HorizontalAlignment="Center" VerticalAlignment="Center"  />
         <StackPanel Grid.Row="1" Grid.Column="1">
             <TextBlock Text="логин:" Margin="10 10 10 0"/>
             <TextBox Margin="10 0 10 20"  Name="Log_TB"/>
@@ -27,6 +28,7 @@
             <TextBlock Text="пароль:" Margin="10 10 10 0"/>
             <TextBox Margin="10 0 10 20" Name="Pass_TB"/>
         </StackPanel>
-        <Button Grid.Column="1" Grid.Row="3" Height="30" Width="100" Content="вход" Click="Button_Click" Background="{x:Null}" />
+        <Button Name="Vxod_BT" Grid.Column="1" Grid.Row="3" Height="30" Width="100" Content="вход" Click="Button_Click" Background="{x:Null}" />
+        <Button Name="Vxod1_BT" Grid.Column="1" Grid.Row="4" Height="10" Width="10" Content="вход" Background="{x:Null}" MouseDown="Vxod1_BT_MouseDown" MouseEnter="Vxod1_BT_MouseEnter" />
     </Grid>
 </Window>

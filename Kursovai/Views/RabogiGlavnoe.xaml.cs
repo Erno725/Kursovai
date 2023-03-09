@@ -22,6 +22,8 @@ namespace Kursovai.Views
         public RabogiGlavnoe()
         {
             InitializeComponent();
+
+            GridUchet.ItemsSource = Classes.HelperClass.user16Entities.Задача.ToList();
             //дата
             TimerX.Content = DateTime.Now.ToString("dd:MMMM:yyyy");
             TimerY.Content = DateTime.Now.ToString("HH:mm:ss");
@@ -31,6 +33,22 @@ namespace Kursovai.Views
             timer.IsEnabled = true;
             timer.Tick += (o, e) => { TimerY.Content = DateTime.Now.ToString("HH:mm:ss"); };
             timer.Start();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            //переход на авторизацию
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            Close();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            //переход на создание карточки 
+            SozdanieKartogi sozdanieKartogi = new SozdanieKartogi();
+            sozdanieKartogi.ShowDialog();
+            GridUchet.ItemsSource = Classes.HelperClass.user16Entities.Задача.ToList();
         }
     }
 }

@@ -11,8 +11,7 @@ namespace Kursovai.Classes
     {
         public static user15Entities user16Entities = new user15Entities();
         public static Models.Сотрудник сотрудник = new Сотрудник();
-        
-
+        public static Models.Задача задача = new Задача();
     }
 
 }

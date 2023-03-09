@@ -26,6 +26,31 @@
                 <Label Name="TimerY" Grid.Row="0" Grid.Column="2" FontSize="20" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  />
                 <Label Name="TimerX" Grid.Row="0" Grid.Column="2" FontSize="12" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
             </StackPanel>
+            <Button Grid.Column="3" Width="70" Height="20" Margin="10 0 10 30 " Content="вернуться" Click="Button_Click"/>
         </Grid>
+        <Button Width="100" Height="30" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Right"  Margin="10" Content="создать карточку" Click="Button_Click_1" />
+        <DataGrid IsReadOnly="True" Margin="5" Grid.Row="2" Grid.RowSpan="2" Grid.ColumnSpan="4" Name="GridUchet" AutoGenerateColumns="False" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="№" Width="30" Binding="{Binding Ключ}" />
+                <DataGridTextColumn Header="Задача" Width="*" Binding="{Binding НазваниеЗадачи}"/>
+                <DataGridTextColumn Header="напровление" Width="*" Binding="{Binding Направление.Название}"/>
+                <DataGridTemplateColumn  Header="проверка" Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding SdelanoRab}" Width="20" Height="20"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Header="Описание" Width="270" Binding="{Binding Описание}"/>
+                <DataGridTextColumn Header="дата" Width="*" Binding="{Binding DataPostZ}"/>
+                <DataGridTemplateColumn  Header="проверка" Width="*"  >
+                    <DataGridTemplateColumn.CellTemplate >
+                        <DataTemplate>
+                            <Image Source="{Binding Proverka}" Width="20" Height="20"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Window>
