@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Kursovai.Views"
         mc:Ignorable="d"
-       Title="MainWindow" Height="350" Width="250"   WindowStartupLocation="CenterScreen"  ResizeMode="NoResize">
+       Title="MainWindow" Height="350" Width="250"   WindowStartupLocation="CenterScreen"  ResizeMode="NoResize" MouseLeftButtonDown="Window_MouseLeftButtonDown">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*" />

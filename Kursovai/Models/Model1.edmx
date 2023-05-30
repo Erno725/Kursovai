@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Хранилище user15Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Хранилище Smirnov_kursovaiModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="sysdiagrams">
           <Key>
             <PropertyRef Name="diagram_id" />
@@ -24,13 +24,11 @@
           <Property Name="КлючНаправление" Type="int" Nullable="false" />
           <Property Name="КлючСделанойРабочим" Type="bit" Nullable="false" />
           <Property Name="Описание" Type="nvarchar" MaxLength="250" Nullable="false" />
-          <Property Name="ДатаПоставленойЗадачи" Type="date" Nullable="false" />
+          <Property Name="ДатаПоставленойЗадачи" Type="datetime" Nullable="false" />
           <Property Name="КлючПроверки" Type="bit" Nullable="false" />
           <Property Name="КлючИсполнителя" Type="int" />
           <Property Name="КлючАдминистратора" Type="int" />
         </EntityType>
-        <!--Ошибки, обнаруженные при создании:
-предупреждение 6002: В таблице или представлении "user15.dbo.КлючАдминестратора" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
         <EntityType Name="КлючАдминестратора">
           <Key>
             <PropertyRef Name="КлючАдминестратор" />
@@ -72,7 +70,7 @@
           <Property Name="Пароль" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="ПервыйВход" Type="bit" />
         </EntityType>
-        <Association Name="\">
+        <Association Name="FK_C_">
           <End Role="Сотрудник" Type="Self.Сотрудник" Multiplicity="0..1" />
           <End Role="Задача" Type="Self.Задача" Multiplicity="*" />
           <ReferentialConstraint>
@@ -132,19 +130,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Хранилище user15ModelContainer">
+        <EntityContainer Name="Хранилище Smirnov_kursovaiModelContainer">
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Задача" EntityType="Self.Задача" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="КлючАдминестратора" EntityType="Self.КлючАдминестратора" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="МестоРаботника" EntityType="Self.МестоРаботника" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Направление" EntityType="Self.Направление" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Роли" EntityType="Self.Роли" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Сотрудник" EntityType="Self.Сотрудник" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="КлючАдминестратора" EntityType="Self.КлючАдминестратора" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [КлючАдминестратора].[КлючАдминестратор] AS [КлючАдминестратор]
-    FROM [dbo].[КлючАдминестратора] AS [КлючАдминестратора]</DefiningQuery>
-          </EntitySet>
-          <AssociationSet Name="\" Association="Self.\">
+          <AssociationSet Name="FK_C_" Association="Self.FK_C_">
             <End Role="Сотрудник" EntitySet="Сотрудник" />
             <End Role="Задача" EntitySet="Задача" />
           </AssociationSet>
@@ -165,44 +159,16 @@
             <End Role="Сотрудник" EntitySet="Сотрудник" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="user15Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityContainer Name="user15Entities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="sysdiagrams" EntityType="user15Model.sysdiagrams" />
-          <EntitySet Name="Задача" EntityType="user15Model.Задача" />
-          <EntitySet Name="МестоРаботника" EntityType="user15Model.МестоРаботника" />
-          <EntitySet Name="Направление" EntityType="user15Model.Направление" />
-          <EntitySet Name="Роли" EntityType="user15Model.Роли" />
-          <EntitySet Name="Сотрудник" EntityType="user15Model.Сотрудник" />
-          <EntitySet Name="КлючАдминестратора" EntityType="user15Model.КлючАдминестратора" />
-          <AssociationSet Name="C_" Association="user15Model.C_">
-            <End Role="Сотрудник" EntitySet="Сотрудник" />
-            <End Role="Задача" EntitySet="Задача" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Задача_Направление" Association="user15Model.FK_Задача_Направление">
-            <End Role="Направление" EntitySet="Направление" />
-            <End Role="Задача" EntitySet="Задача" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Задача_Сотрудник" Association="user15Model.FK_Задача_Сотрудник">
-            <End Role="Сотрудник" EntitySet="Сотрудник" />
-            <End Role="Задача" EntitySet="Задача" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Сотрудник_МестоРаботника" Association="user15Model.FK_Сотрудник_МестоРаботника">
-            <End Role="МестоРаботника" EntitySet="МестоРаботника" />
-            <End Role="Сотрудник" EntitySet="Сотрудник" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Сотрудник_Роли" Association="user15Model.FK_Сотрудник_Роли">
-            <End Role="Роли" EntitySet="Роли" />
-            <End Role="Сотрудник" EntitySet="Сотрудник" />
-          </AssociationSet>
-        </EntityContainer>
+      <Schema Namespace="Smirnov_kursovaiModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="sysdiagrams">
           <Key>
             <PropertyRef Name="diagram_id" />
           </Key>
-          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="principal_id" Type="Int32" Nullable="false" />
           <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="version" Type="Int32" />
@@ -213,17 +179,23 @@
             <PropertyRef Name="Ключ" />
           </Key>
           <Property Name="Ключ" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="НазваниеЗадачи" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="НазваниеЗадачи" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="КлючНаправление" Type="Int32" Nullable="false" />
           <Property Name="КлючСделанойРабочим" Type="Boolean" Nullable="false" />
-          <Property Name="Описание" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="ДатаПоставленойЗадачи" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Описание" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ДатаПоставленойЗадачи" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="КлючПроверки" Type="Boolean" Nullable="false" />
           <Property Name="КлючИсполнителя" Type="Int32" />
           <Property Name="КлючАдминистратора" Type="Int32" />
-          <NavigationProperty Name="Сотрудник" Relationship="user15Model.C_" FromRole="Задача" ToRole="Сотрудник" />
-          <NavigationProperty Name="Направление" Relationship="user15Model.FK_Задача_Направление" FromRole="Задача" ToRole="Направление" />
-          <NavigationProperty Name="Сотрудник1" Relationship="user15Model.FK_Задача_Сотрудник" FromRole="Задача" ToRole="Сотрудник" />
+          <NavigationProperty Name="Сотрудник" Relationship="Self.FK_C_" FromRole="Задача" ToRole="Сотрудник" />
+          <NavigationProperty Name="Направление" Relationship="Self.FK_Задача_Направление" FromRole="Задача" ToRole="Направление" />
+          <NavigationProperty Name="Сотрудник1" Relationship="Self.FK_Задача_Сотрудник" FromRole="Задача" ToRole="Сотрудник" />
+        </EntityType>
+        <EntityType Name="КлючАдминестратора">
+          <Key>
+            <PropertyRef Name="КлючАдминестратор" />
+          </Key>
+          <Property Name="КлючАдминестратор" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="МестоРаботника">
           <Key>
@@ -232,23 +204,23 @@
           <Property Name="Ключ" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Этаж" Type="Int32" Nullable="false" />
           <Property Name="Павельен" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Сотрудник" Relationship="user15Model.FK_Сотрудник_МестоРаботника" FromRole="МестоРаботника" ToRole="Сотрудник" />
+          <NavigationProperty Name="Сотрудник" Relationship="Self.FK_Сотрудник_МестоРаботника" FromRole="МестоРаботника" ToRole="Сотрудник" />
         </EntityType>
         <EntityType Name="Направление">
           <Key>
             <PropertyRef Name="Ключ" />
           </Key>
           <Property Name="Ключ" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Название" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Задача" Relationship="user15Model.FK_Задача_Направление" FromRole="Направление" ToRole="Задача" />
+          <Property Name="Название" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Задача" Relationship="Self.FK_Задача_Направление" FromRole="Направление" ToRole="Задача" />
         </EntityType>
         <EntityType Name="Роли">
           <Key>
             <PropertyRef Name="Ключ" />
           </Key>
           <Property Name="Ключ" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="НазваниеРоли" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Сотрудник" Relationship="user15Model.FK_Сотрудник_Роли" FromRole="Роли" ToRole="Сотрудник" />
+          <Property Name="НазваниеРоли" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Сотрудник" Relationship="Self.FK_Сотрудник_Роли" FromRole="Роли" ToRole="Сотрудник" />
         </EntityType>
         <EntityType Name="Сотрудник">
           <Key>
@@ -256,26 +228,20 @@
           </Key>
           <Property Name="Ключ" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="КлючРоль" Type="Int32" Nullable="false" />
-          <Property Name="Имя" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Фамилия" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Имя" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Фамилия" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="МестоРаботы" Type="Int32" />
-          <Property Name="Логин" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Пароль" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Логин" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Пароль" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ПервыйВход" Type="Boolean" />
-          <NavigationProperty Name="Задача" Relationship="user15Model.C_" FromRole="Сотрудник" ToRole="Задача" />
-          <NavigationProperty Name="Задача1" Relationship="user15Model.FK_Задача_Сотрудник" FromRole="Сотрудник" ToRole="Задача" />
-          <NavigationProperty Name="МестоРаботника" Relationship="user15Model.FK_Сотрудник_МестоРаботника" FromRole="Сотрудник" ToRole="МестоРаботника" />
-          <NavigationProperty Name="Роли" Relationship="user15Model.FK_Сотрудник_Роли" FromRole="Сотрудник" ToRole="Роли" />
+          <NavigationProperty Name="Задача" Relationship="Self.FK_C_" FromRole="Сотрудник" ToRole="Задача" />
+          <NavigationProperty Name="Задача1" Relationship="Self.FK_Задача_Сотрудник" FromRole="Сотрудник" ToRole="Задача" />
+          <NavigationProperty Name="МестоРаботника" Relationship="Self.FK_Сотрудник_МестоРаботника" FromRole="Сотрудник" ToRole="МестоРаботника" />
+          <NavigationProperty Name="Роли" Relationship="Self.FK_Сотрудник_Роли" FromRole="Сотрудник" ToRole="Роли" />
         </EntityType>
-        <EntityType Name="КлючАдминестратора">
-          <Key>
-            <PropertyRef Name="КлючАдминестратор" />
-          </Key>
-          <Property Name="КлючАдминестратор" Type="Boolean" Nullable="false" />
-        </EntityType>
-        <Association Name="C_">
-          <End Type="user15Model.Сотрудник" Role="Сотрудник" Multiplicity="0..1" />
-          <End Type="user15Model.Задача" Role="Задача" Multiplicity="*" />
+        <Association Name="FK_C_">
+          <End Role="Сотрудник" Type="Self.Сотрудник" Multiplicity="0..1" />
+          <End Role="Задача" Type="Self.Задача" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Сотрудник">
               <PropertyRef Name="Ключ" />
@@ -286,8 +252,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Задача_Направление">
-          <End Type="user15Model.Направление" Role="Направление" Multiplicity="1" />
-          <End Type="user15Model.Задача" Role="Задача" Multiplicity="*" />
+          <End Role="Направление" Type="Self.Направление" Multiplicity="1" />
+          <End Role="Задача" Type="Self.Задача" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Направление">
               <PropertyRef Name="Ключ" />
@@ -298,8 +264,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Задача_Сотрудник">
-          <End Type="user15Model.Сотрудник" Role="Сотрудник" Multiplicity="0..1" />
-          <End Type="user15Model.Задача" Role="Задача" Multiplicity="*" />
+          <End Role="Сотрудник" Type="Self.Сотрудник" Multiplicity="0..1" />
+          <End Role="Задача" Type="Self.Задача" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Сотрудник">
               <PropertyRef Name="Ключ" />
@@ -310,8 +276,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Сотрудник_МестоРаботника">
-          <End Type="user15Model.МестоРаботника" Role="МестоРаботника" Multiplicity="0..1" />
-          <End Type="user15Model.Сотрудник" Role="Сотрудник" Multiplicity="*" />
+          <End Role="МестоРаботника" Type="Self.МестоРаботника" Multiplicity="0..1" />
+          <End Role="Сотрудник" Type="Self.Сотрудник" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="МестоРаботника">
               <PropertyRef Name="Ключ" />
@@ -322,8 +288,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Сотрудник_Роли">
-          <End Type="user15Model.Роли" Role="Роли" Multiplicity="1" />
-          <End Type="user15Model.Сотрудник" Role="Сотрудник" Multiplicity="*" />
+          <End Role="Роли" Type="Self.Роли" Multiplicity="1" />
+          <End Role="Сотрудник" Type="Self.Сотрудник" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Роли">
               <PropertyRef Name="Ключ" />
@@ -333,81 +299,110 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        </Schema>
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Задача" EntityType="Self.Задача" />
+          <EntitySet Name="КлючАдминестратора" EntityType="Self.КлючАдминестратора" />
+          <EntitySet Name="МестоРаботника" EntityType="Self.МестоРаботника" />
+          <EntitySet Name="Направление" EntityType="Self.Направление" />
+          <EntitySet Name="Роли" EntityType="Self.Роли" />
+          <EntitySet Name="Сотрудник" EntityType="Self.Сотрудник" />
+          <AssociationSet Name="FK_C_" Association="Self.FK_C_">
+            <End Role="Сотрудник" EntitySet="Сотрудник" />
+            <End Role="Задача" EntitySet="Задача" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Задача_Направление" Association="Self.FK_Задача_Направление">
+            <End Role="Направление" EntitySet="Направление" />
+            <End Role="Задача" EntitySet="Задача" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Задача_Сотрудник" Association="Self.FK_Задача_Сотрудник">
+            <End Role="Сотрудник" EntitySet="Сотрудник" />
+            <End Role="Задача" EntitySet="Задача" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Сотрудник_МестоРаботника" Association="Self.FK_Сотрудник_МестоРаботника">
+            <End Role="МестоРаботника" EntitySet="МестоРаботника" />
+            <End Role="Сотрудник" EntitySet="Сотрудник" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Сотрудник_Роли" Association="Self.FK_Сотрудник_Роли">
+            <End Role="Роли" EntitySet="Роли" />
+            <End Role="Сотрудник" EntitySet="Сотрудник" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище user15ModelContainer" CdmEntityContainer="user15Entities">
+        <EntityContainerMapping StorageEntityContainer="Хранилище Smirnov_kursovaiModelContainer" CdmEntityContainer="Entities">
           <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="user15Model.sysdiagrams">
+            <EntityTypeMapping TypeName="Smirnov_kursovaiModel.sysdiagrams">
               <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="definition" ColumnName="definition" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
                 <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Задача">
-            <EntityTypeMapping TypeName="user15Model.Задача">
+            <EntityTypeMapping TypeName="Smirnov_kursovaiModel.Задача">
               <MappingFragment StoreEntitySet="Задача">
-                <ScalarProperty Name="КлючАдминистратора" ColumnName="КлючАдминистратора" />
-                <ScalarProperty Name="КлючИсполнителя" ColumnName="КлючИсполнителя" />
-                <ScalarProperty Name="КлючПроверки" ColumnName="КлючПроверки" />
-                <ScalarProperty Name="ДатаПоставленойЗадачи" ColumnName="ДатаПоставленойЗадачи" />
-                <ScalarProperty Name="Описание" ColumnName="Описание" />
-                <ScalarProperty Name="КлючСделанойРабочим" ColumnName="КлючСделанойРабочим" />
-                <ScalarProperty Name="КлючНаправление" ColumnName="КлючНаправление" />
+                <ScalarProperty Name="Ключ" ColumnName="Ключ" />
                 <ScalarProperty Name="НазваниеЗадачи" ColumnName="НазваниеЗадачи" />
-                <ScalarProperty Name="Ключ" ColumnName="Ключ" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="МестоРаботника">
-            <EntityTypeMapping TypeName="user15Model.МестоРаботника">
-              <MappingFragment StoreEntitySet="МестоРаботника">
-                <ScalarProperty Name="Павельен" ColumnName="Павельен" />
-                <ScalarProperty Name="Этаж" ColumnName="Этаж" />
-                <ScalarProperty Name="Ключ" ColumnName="Ключ" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Направление">
-            <EntityTypeMapping TypeName="user15Model.Направление">
-              <MappingFragment StoreEntitySet="Направление">
-                <ScalarProperty Name="Название" ColumnName="Название" />
-                <ScalarProperty Name="Ключ" ColumnName="Ключ" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Роли">
-            <EntityTypeMapping TypeName="user15Model.Роли">
-              <MappingFragment StoreEntitySet="Роли">
-                <ScalarProperty Name="НазваниеРоли" ColumnName="НазваниеРоли" />
-                <ScalarProperty Name="Ключ" ColumnName="Ключ" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Сотрудник">
-            <EntityTypeMapping TypeName="user15Model.Сотрудник">
-              <MappingFragment StoreEntitySet="Сотрудник">
-                <ScalarProperty Name="ПервыйВход" ColumnName="ПервыйВход" />
-                <ScalarProperty Name="Пароль" ColumnName="Пароль" />
-                <ScalarProperty Name="Логин" ColumnName="Логин" />
-                <ScalarProperty Name="МестоРаботы" ColumnName="МестоРаботы" />
-                <ScalarProperty Name="Фамилия" ColumnName="Фамилия" />
-                <ScalarProperty Name="Имя" ColumnName="Имя" />
-                <ScalarProperty Name="КлючРоль" ColumnName="КлючРоль" />
-                <ScalarProperty Name="Ключ" ColumnName="Ключ" />
+                <ScalarProperty Name="КлючНаправление" ColumnName="КлючНаправление" />
+                <ScalarProperty Name="КлючСделанойРабочим" ColumnName="КлючСделанойРабочим" />
+                <ScalarProperty Name="Описание" ColumnName="Описание" />
+                <ScalarProperty Name="ДатаПоставленойЗадачи" ColumnName="ДатаПоставленойЗадачи" />
+                <ScalarProperty Name="КлючПроверки" ColumnName="КлючПроверки" />
+                <ScalarProperty Name="КлючИсполнителя" ColumnName="КлючИсполнителя" />
+                <ScalarProperty Name="КлючАдминистратора" ColumnName="КлючАдминистратора" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="КлючАдминестратора">
-            <EntityTypeMapping TypeName="user15Model.КлючАдминестратора">
+            <EntityTypeMapping TypeName="Smirnov_kursovaiModel.КлючАдминестратора">
               <MappingFragment StoreEntitySet="КлючАдминестратора">
                 <ScalarProperty Name="КлючАдминестратор" ColumnName="КлючАдминестратор" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="МестоРаботника">
+            <EntityTypeMapping TypeName="Smirnov_kursovaiModel.МестоРаботника">
+              <MappingFragment StoreEntitySet="МестоРаботника">
+                <ScalarProperty Name="Ключ" ColumnName="Ключ" />
+                <ScalarProperty Name="Этаж" ColumnName="Этаж" />
+                <ScalarProperty Name="Павельен" ColumnName="Павельен" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Направление">
+            <EntityTypeMapping TypeName="Smirnov_kursovaiModel.Направление">
+              <MappingFragment StoreEntitySet="Направление">
+                <ScalarProperty Name="Ключ" ColumnName="Ключ" />
+                <ScalarProperty Name="Название" ColumnName="Название" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Роли">
+            <EntityTypeMapping TypeName="Smirnov_kursovaiModel.Роли">
+              <MappingFragment StoreEntitySet="Роли">
+                <ScalarProperty Name="Ключ" ColumnName="Ключ" />
+                <ScalarProperty Name="НазваниеРоли" ColumnName="НазваниеРоли" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Сотрудник">
+            <EntityTypeMapping TypeName="Smirnov_kursovaiModel.Сотрудник">
+              <MappingFragment StoreEntitySet="Сотрудник">
+                <ScalarProperty Name="Ключ" ColumnName="Ключ" />
+                <ScalarProperty Name="КлючРоль" ColumnName="КлючРоль" />
+                <ScalarProperty Name="Имя" ColumnName="Имя" />
+                <ScalarProperty Name="Фамилия" ColumnName="Фамилия" />
+                <ScalarProperty Name="МестоРаботы" ColumnName="МестоРаботы" />
+                <ScalarProperty Name="Логин" ColumnName="Логин" />
+                <ScalarProperty Name="Пароль" ColumnName="Пароль" />
+                <ScalarProperty Name="ПервыйВход" ColumnName="ПервыйВход" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

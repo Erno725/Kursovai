@@ -98,17 +98,22 @@ namespace Kursovai
 
         private void Vxod1_BT_MouseEnter(object sender, MouseEventArgs e)
         {
-           if(Vxod1_BT.ActualWidth == 10)
-            {
-                DoubleAnimation qwe = new DoubleAnimation();
-                qwe.From = 0;
-                qwe.To = 200;
-                qwe.Duration = TimeSpan.FromSeconds(3);
-                Vxod1_BT.BeginAnimation(Button.WidthProperty, qwe);
-                Vxod1_BT.BeginAnimation(Button.HeightProperty, qwe);
-            }
+           //if(Vxod1_BT.ActualWidth == 10)
+           // {
+           //     DoubleAnimation qwe = new DoubleAnimation();
+           //     qwe.From = 0;
+           //     qwe.To = 200;
+           //     qwe.Duration = TimeSpan.FromSeconds(3);
+           //     Vxod1_BT.BeginAnimation(Button.WidthProperty, qwe);
+           //     Vxod1_BT.BeginAnimation(Button.HeightProperty, qwe);
+           // }
                 
            
+        }
+
+        private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            this.DragMove();
         }
     }
 }

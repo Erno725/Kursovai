@@ -5,7 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Kursovai"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="250"   WindowStartupLocation="CenterScreen"  ResizeMode="NoResize">
+         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+     TextElement.FontWeight="Regular"
+     TextElement.FontSize="13"
+     TextOptions.TextFormattingMode="Ideal"
+     TextOptions.TextRenderingMode="Auto"
+     Background="{DynamicResource MaterialDesignPaper}"
+     FontFamily="{DynamicResource MaterialDesignFont}"
+        Title="" Height="350" Width="250"   WindowStartupLocation="CenterScreen"  ResizeMode="NoResize" MouseLeftButtonDown="Window_MouseLeftButtonDown" >
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*" />
@@ -28,7 +35,6 @@
             <TextBlock Text="пароль:" Margin="10 10 10 0"/>
             <TextBox Margin="10 0 10 20" Name="Pass_TB"/>
         </StackPanel>
-        <Button Name="Vxod_BT" Grid.Column="1" Grid.Row="3" Height="30" Width="100" Content="вход" Click="Button_Click" Background="{x:Null}" />
-        <Button Name="Vxod1_BT" Grid.Column="1" Grid.Row="4" Height="10" Width="10" Content="вход" Background="{x:Null}" MouseDown="Vxod1_BT_MouseDown" MouseEnter="Vxod1_BT_MouseEnter" />
+        <Button Name="Vxod_BT" Grid.Column="1" Grid.Row="3" Height="30" Width="100" Content="вход" Click="Button_Click" Style="{DynamicResource ButtonStyle1}" Background="{x:Null}" />
     </Grid>
 </Window>

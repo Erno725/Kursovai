@@ -12,7 +12,7 @@ namespace Kursovai.Models
         {
             get
             {
-                return ДатаПоставленойЗадачи.ToString("dd:MMMM:yyyy");
+                return ДатаПоставленойЗадачи.ToString("dd:MM:yyyy");
 
             }
         }

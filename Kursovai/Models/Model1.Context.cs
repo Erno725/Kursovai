@@ -13,10 +13,10 @@ namespace Kursovai.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class user15Entities : DbContext
+    public partial class Entities : DbContext
     {
-        public user15Entities()
-            : base("name=user15Entities")
+        public Entities()
+            : base("name=Entities")
         {
         }
     
@@ -27,10 +27,10 @@ namespace Kursovai.Models
     
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Задача> Задача { get; set; }
+        public virtual DbSet<КлючАдминестратора> КлючАдминестратора { get; set; }
         public virtual DbSet<МестоРаботника> МестоРаботника { get; set; }
         public virtual DbSet<Направление> Направление { get; set; }
         public virtual DbSet<Роли> Роли { get; set; }
         public virtual DbSet<Сотрудник> Сотрудник { get; set; }
-        public virtual DbSet<КлючАдминестратора> КлючАдминестратора { get; set; }
     }
 }

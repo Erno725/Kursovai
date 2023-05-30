@@ -9,7 +9,7 @@ namespace Kursovai.Classes
 {
     public class HelperClass
     {
-        public static user15Entities user16Entities = new user15Entities();
+        public static Entities user16Entities = new Entities();
         public static Models.Сотрудник сотрудник = new Сотрудник();
         public static Models.Задача задача = new Задача();
     }

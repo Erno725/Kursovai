@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Kursovai.Views"
         mc:Ignorable="d"
-        Title="" Height="450" Width="800"  WindowStartupLocation="CenterScreen"  ResizeMode="NoResize"   >
+        Title="" Height="450" Width="800"  WindowStartupLocation="CenterScreen"  ResizeMode="NoResize" MouseLeftButtonDown="Window_MouseLeftButtonDown"   >
     <Grid>
         <Grid.ColumnDefinitions>
         </Grid.ColumnDefinitions>
@@ -21,25 +21,25 @@
                 <ColumnDefinition Width="1*" />
                 <ColumnDefinition Width="1*" />
             </Grid.ColumnDefinitions>
-            <TextBlock Text="Торговый центр" FontSize="17" TextDecorations="Underline" HorizontalAlignment="Center" />
+            <TextBlock Text="Торговый центр" FontSize="20" TextDecorations="Underline" HorizontalAlignment="Center" Grid.Column="1" Margin="30 10 30 10" />
             <!--время-->
             <StackPanel  Grid.Row="0" Grid.Column="2">
                 <Label Name="TimerY" Grid.Row="0" Grid.Column="2" FontSize="20" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  />
                 <Label Name="TimerX" Grid.Row="0" Grid.Column="2" FontSize="12" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
             </StackPanel>
             <!--вернуться-->
-            <Button Grid.Column="3" Width="70" Height="20" Margin="10 0 10 30 " Content="вернуться" Click="Button_Click"/>
+            <Button Grid.Column="3" Width="100" Height="30" Margin="16,10,16,20" Content="вернуться" Click="Button_Click" FontSize="12"/>
         </Grid>
-        <!--создать карточку--> 
-        <Button Width="100" Height="30" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Right"  Margin="10 10 120 10" Content="сброс фильтрации" Click="Button_Click_2" />
-        <!--сброс фильтрации --> 
-        <Button Width="100" Height="30" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Right"  Margin="10" Content="создать карточку" Click="Button_Click_1" />
+        <!--создать карточку-->
+        <Button Width="100" Height="30" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Right"  Margin="10 10 120 10" Content="сброс фильтрации" Click="Button_Click_2" FontSize="8" />
+        <!--сброс фильтрации -->
+        <Button  Width="100" Height="30" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Right"  Margin="10" Content="создать карточку" Click="Button_Click_1" FontSize="8" />
         <!--список-->
-        <DataGrid IsReadOnly="True" Margin="5" Grid.Row="2" Grid.RowSpan="2" Grid.ColumnSpan="4" Name="GridUchet" AutoGenerateColumns="False" SelectionChanged="GridUchet_SelectionChanged">
+        <DataGrid IsReadOnly="True" Margin="5" Grid.Row="2" Grid.RowSpan="2" Grid.ColumnSpan="4" Name="GridUchet" AutoGenerateColumns="False" SelectionChanged="GridUchet_SelectionChanged" MouseDoubleClick="GridUchet_MouseDoubleClick">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="№" Width="30" Binding="{Binding Ключ}" />
                 <DataGridTextColumn Header="Задача" Width="*" Binding="{Binding НазваниеЗадачи}"/>
-                <DataGridTextColumn Header="напровление" Width="*" Binding="{Binding Направление.Название}"/>
+                <DataGridTextColumn Header="напровление" Width="130" Binding="{Binding Направление.Название}"/>
                 <DataGridTemplateColumn  Header="проверка" Width="*">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
@@ -48,7 +48,7 @@
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
                 <DataGridTextColumn Header="Описание" Width="270" Binding="{Binding Описание}"/>
-                <DataGridTextColumn Header="дата" Width="*" Binding="{Binding DataPostZ}"/>
+                <DataGridTextColumn Header="дата" Width="100" Binding="{Binding DataPostZ}"/>
                 <DataGridTemplateColumn  Header="проверка" Width="*"  >
                     <DataGridTemplateColumn.CellTemplate >
                         <DataTemplate>
@@ -58,7 +58,7 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
-    <!--фильтрация-->
+        <!--фильтрация-->
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*" />
@@ -66,7 +66,7 @@
                 <ColumnDefinition Width="1*" />
                 <ColumnDefinition Width="1*" />
             </Grid.ColumnDefinitions>
-            <StackPanel Margin="5">
+            <StackPanel Margin="15 5 5 5">
                 <TextBlock Text="от какого числа"/>
                 <DatePicker Name="Ot_DP" CalendarClosed="Ot_DP_CalendarClosed" />
             </StackPanel >

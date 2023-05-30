@@ -50,5 +50,36 @@ namespace Kursovai.Views
             // обновление таблицы
             GridUchet.ItemsSource = Classes.HelperClass.user16Entities.Задача.ToList();
         }
+
+        private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            this.DragMove();
+        }
+
+        private void Posl_DP_CalendarClosed(object sender, RoutedEventArgs e)
+        {
+            filterDAta();
+        }
+
+        private void Ot_DP_CalendarClosed(object sender, RoutedEventArgs e)
+        {
+            filterDAta();
+        }
+        private void filterDAta()
+        //фильтрация по дате 
+        {
+            if (!(string.IsNullOrEmpty(Ot_DP.Text) || string.IsNullOrEmpty(Posl_DP.Text)))
+            {
+                GridUchet.ItemsSource = Classes.HelperClass.user16Entities.Задача.Where(i => i.ДатаПоставленойЗадачи >= (DateTime)Ot_DP.SelectedDate && i.ДатаПоставленойЗадачи <= (DateTime)Posl_DP.SelectedDate).ToList();
+            }
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            //сброс фильтра 
+            Ot_DP.Text = "";
+            Posl_DP.Text = "";
+            GridUchet.ItemsSource = Classes.HelperClass.user16Entities.Задача.ToList();
+        }
     }
 }

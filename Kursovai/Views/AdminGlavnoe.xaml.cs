@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Kursovai.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -87,6 +88,22 @@ namespace Kursovai.Views
             Ot_DP.Text = "";
             Posl_DP.Text = "";
             GridUchet.ItemsSource = Classes.HelperClass.user16Entities.Задача.ToList();
+        }
+
+        private void GridUchet_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if(((Задача)GridUchet.SelectedItem).КлючСделанойРабочим )
+            {
+                
+                Classes.HelperClass.user16Entities.Задача.First(i => i.Ключ == ((Задача)GridUchet.SelectedItem).Ключ).КлючПроверки = true;
+                Classes.HelperClass.user16Entities.SaveChanges();
+                GridUchet.ItemsSource = Classes.HelperClass.user16Entities.Задача.ToList();
+            }
+        }
+
+        private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            //this.DragMove();
         }
 
 

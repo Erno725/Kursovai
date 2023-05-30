@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Kursovai.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -48,6 +49,44 @@ namespace Kursovai.Views
             //переход на создание карточки 
             SozdanieKartogi sozdanieKartogi = new SozdanieKartogi();
             sozdanieKartogi.ShowDialog();
+            GridUchet.ItemsSource = Classes.HelperClass.user16Entities.Задача.ToList();
+        }
+
+        private void GridUchet_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            Classes.HelperClass.user16Entities.Задача.First(i => i.Ключ == ((Задача)GridUchet.SelectedItem).Ключ).КлючСделанойРабочим = true;
+            Classes.HelperClass.user16Entities.SaveChanges();
+            GridUchet.ItemsSource = Classes.HelperClass.user16Entities.Задача.ToList();
+        }
+
+        private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            this.DragMove();
+        }
+
+        private void Ot_DP_CalendarClosed(object sender, RoutedEventArgs e)
+        {
+            filterDAta();
+        }
+
+        private void Posl_DP_CalendarClosed(object sender, RoutedEventArgs e)
+        {
+            filterDAta();
+        }
+        private void filterDAta()
+        //фильтрация по дате 
+        {
+            if (!(string.IsNullOrEmpty(Ot_DP.Text) || string.IsNullOrEmpty(Posl_DP.Text)))
+            {
+                GridUchet.ItemsSource = Classes.HelperClass.user16Entities.Задача.Where(i => i.ДатаПоставленойЗадачи >= (DateTime)Ot_DP.SelectedDate && i.ДатаПоставленойЗадачи <= (DateTime)Posl_DP.SelectedDate).ToList();
+            }
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            //сброс фильтра 
+            Ot_DP.Text = "";
+            Posl_DP.Text = "";
             GridUchet.ItemsSource = Classes.HelperClass.user16Entities.Задача.ToList();
         }
     }
